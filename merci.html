@@ -109,6 +109,20 @@
   </div>
 </footer>
 
+<!-- ============ BARRE D'ACTION (téléphone) ============
+     Deux gestes qu'on veut faire vite depuis la rue : consulter la carte
+     et se faire guider jusqu'à la boutique. Masquée sur ordinateur. -->
+<nav class="mobar" id="mobar" aria-label="Accès rapide">
+  <a class="mo-carte" href="la-carte.html">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
+    La carte
+  </a>
+  <a class="mo-aller" href="https://www.google.com/maps/dir/?api=1&amp;destination=Gare+de+Garges-Sarcelles%2C+95140+Garges-l%C3%A8s-Gonesse" target="_blank" rel="noopener">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+    Y aller
+  </a>
+</nav>
+
 <!-- ====================== BANDEAU COOKIES ====================== -->
 <div class="cookies" id="cookies" role="dialog" aria-modal="false"
      aria-labelledby="cookies-titre" aria-describedby="cookies-texte" hidden>
@@ -147,6 +161,24 @@
     }catch(e){}
   })();
 
+  /* ------------------------------ barre d'action fixe sur téléphone
+     Elle n'apparaît qu'une fois le premier écran dépassé, s'efface quand
+     le menu ou le bandeau cookies occupent déjà le bas de l'écran. */
+  var syncBar=function(){};
+  var mobar=document.getElementById('mobar');
+  if(mobar){
+    syncBar=function(){
+      var y=window.scrollY||window.pageYOffset;
+      var m=document.getElementById('menu');
+      var ck=document.getElementById('cookies');
+      var libre=(!m||!m.classList.contains('open'))&&(!ck||ck.hidden);
+      mobar.classList.toggle('on', y>240 && libre);
+    };
+    window.addEventListener('scroll',syncBar,{passive:true});
+    window.addEventListener('resize',syncBar);
+    syncBar();
+  }
+
   /* ---------------------------------------------------------- menu mobile */
   var burg=document.getElementById('burg'),menu=document.getElementById('menu');
   function setMenu(open){
@@ -154,6 +186,7 @@
     menu.classList.toggle('open',open);
     burg.setAttribute('aria-expanded',open?'true':'false');
     burg.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');
+    syncBar();
   }
   if(burg&&menu){
     burg.addEventListener('click',function(e){
@@ -235,6 +268,59 @@
     msync();
   }
 
+  /* ============================================ ouvert ou fermé maintenant
+     L'état est déduit du tableau des horaires affiché juste à côté : si les
+     horaires changent dans le HTML, cette mention suit toute seule. */
+  var statut=document.getElementById('statut');
+  if(statut){
+    var enMinutes=function(t){
+      var m=/(\d{1,2})\s*h\s*(\d{0,2})/i.exec(t);
+      return m?parseInt(m[1],10)*60+(m[2]?parseInt(m[2],10):0):null;
+    };
+    var creneau=function(jour){
+      var li=document.querySelector('.hrs li[data-day="'+jour+'"] span');
+      if(!li)return null;
+      var p=li.textContent.split(/[–—-]/);
+      if(p.length<2)return null;
+      var d=enMinutes(p[0]),f=enMinutes(p[1]);
+      if(d===null||f===null)return null;
+      if(f<=d){f+=1440;}          /* fermeture après minuit */
+      return {d:d,f:f};
+    };
+    var now=new Date(),
+        jour=now.getDay(),
+        min=now.getHours()*60+now.getMinutes(),
+        ouvert=false, prochain=null;
+    var c=creneau(jour);
+    if(c&&min>=c.d&&min<c.f){ouvert=true;}
+    /* service de la veille qui se prolonge après minuit */
+    if(!ouvert){
+      var v=creneau((jour+6)%7);
+      if(v&&v.f>1440&&min<v.f-1440){ouvert=true;}
+    }
+    if(!ouvert){
+      for(var i=0;i<7;i++){
+        var j=(jour+i)%7, s2=creneau(j);
+        if(!s2)continue;
+        if(i===0&&min>=s2.d)continue;
+        prochain={jour:j,d:s2.d};break;
+      }
+    }
+    var noms=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+    var hhmm=function(m){m=m%1440;return (m/60|0)+'h'+('0'+(m%60)).slice(-2);};
+    if(ouvert){
+      statut.className='statut';
+      statut.textContent='Ouvert maintenant';
+    }else{
+      statut.className='statut ferme';
+      statut.textContent = prochain
+        ? (prochain.jour===jour ? 'Fermé · ouvre à '+hhmm(prochain.d)
+                                : 'Fermé · ouvre '+noms[prochain.jour]+' à '+hhmm(prochain.d))
+        : 'Fermé';
+    }
+    statut.hidden=false;
+  }
+
   /* ---------------------------------------------------- carte Google Maps */
   var gmap=document.getElementById('gmap');
   if(gmap){
@@ -270,8 +356,8 @@
   }
 
   var banner=document.getElementById('cookies');
-  function showBanner(){ if(banner){banner.hidden=false;} }
-  function hideBanner(){ if(banner){banner.hidden=true;} }
+  function showBanner(){ if(banner){banner.hidden=false;} syncBar(); }
+  function hideBanner(){ if(banner){banner.hidden=true;} syncBar(); }
 
   var choice=readConsent();
   if(choice==='oui'){ loadAnalytics(); }

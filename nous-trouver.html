@@ -60,8 +60,8 @@
 <!-- ====================== NOUS TROUVER ====================== -->
 <section class="sec" id="trouver">
   <div class="wrap sec-h" style="text-align:center">
-    <h1>Notre rôtisserie<br>à Garges-Sarcelles</h1>
-    <p class="lede" style="margin-inline:auto">La broche tourne toute la journée, à la sortie de la gare de Garges-Sarcelles. Passez commande une dizaine de minutes avant de venir, votre poulet sort du feu à l’heure dite.</p>
+    <h1>Farmer Crousty<br>à Garges-Sarcelles</h1>
+    <p class="lede" style="margin-inline:auto">Juste à la sortie de la gare de Garges-Sarcelles, sur l’avenue du Général de Gaulle. Poulet grillé, tenders, nems et barquettes, à emporter ou sur place, midi et soir.</p>
   </div>
 
   <div class="wrap">
@@ -72,7 +72,7 @@
 
     <div class="shop">
       <div class="shop-col">
-        <svg class="ill" viewBox="0 0 260 170" role="img" aria-label="Façade de la rôtisserie Farmer Crousty">
+        <svg class="ill" viewBox="0 0 260 170" role="img" aria-label="Devanture de la boutique Farmer Crousty">
           <rect x="0" y="0" width="260" height="170" fill="none"/>
           <path d="M18 62 L130 24 L242 62" fill="none" stroke="#F0641B" stroke-width="3" stroke-linejoin="round"/>
           <rect x="30" y="62" width="200" height="94" fill="none" stroke="#F0641B" stroke-width="3"/>
@@ -89,10 +89,14 @@
           <path d="M8 156 h244" stroke="#F0641B" stroke-width="3"/>
         </svg>
         <h4>Farmer Crousty</h4>
+        <p class="statut" id="statut" hidden></p>
         <!-- ADRESSE : remplacer par l'adresse exacte de la boutique -->
         <p class="addr"><strong>Gare de Garges-Sarcelles</strong>Av. du Général de Gaulle<br>95140 Garges-lès-Gonesse</p>
         <span class="pill">RER D · Garges-Sarcelles</span>
-        <a class="pill" href="https://www.google.com/maps/search/?api=1&amp;query=Gare+de+Garges-Sarcelles%2C+95140+Garges-l%C3%A8s-Gonesse" target="_blank" rel="noopener">Ouvrir le plan</a>
+        <div class="shop-acts">
+          <a class="pill pill-full" href="https://www.google.com/maps/dir/?api=1&amp;destination=Gare+de+Garges-Sarcelles%2C+95140+Garges-l%C3%A8s-Gonesse" target="_blank" rel="noopener">Itinéraire</a>
+          <a class="pill" href="https://www.google.com/maps/search/?api=1&amp;query=Gare+de+Garges-Sarcelles%2C+95140+Garges-l%C3%A8s-Gonesse" target="_blank" rel="noopener">Ouvrir le plan</a>
+        </div>
       </div>
 
       <div class="shop-col">
@@ -118,11 +122,12 @@
       <div class="shop-col">
         <h4>Le service</h4>
         <p class="addr">À emporter<br>&amp; sur place</p>
+        <p class="addr" style="margin-top:14px;color:var(--muted)">Comptez une dizaine de minutes<br>aux heures de pointe</p>
         <!-- TÉLÉPHONE : remplacer par le numéro du restaurant, ici et dans la FAQ -->
         <p class="addr" style="margin-top:18px;color:var(--muted)">Numéro de commande<br>à communiquer</p>
 
         <h4 style="margin-top:34px">Nous suivre</h4>
-        <p class="addr">Les sorties de broche, les nouveautés et les coups de cœur, sur Instagram et TikTok</p>
+        <p class="addr">Les nouveautés, les formules du moment et les coups de cœur, sur Instagram et TikTok</p>
         <div class="social">
           <a class="ig-link" href="https://www.instagram.com/farmer_crousty/" target="_blank" rel="noopener">
             <svg class="ig-ico" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
@@ -207,6 +212,20 @@
   </div>
 </footer>
 
+<!-- ============ BARRE D'ACTION (téléphone) ============
+     Deux gestes qu'on veut faire vite depuis la rue : consulter la carte
+     et se faire guider jusqu'à la boutique. Masquée sur ordinateur. -->
+<nav class="mobar" id="mobar" aria-label="Accès rapide">
+  <a class="mo-carte" href="la-carte.html">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
+    La carte
+  </a>
+  <a class="mo-aller" href="https://www.google.com/maps/dir/?api=1&amp;destination=Gare+de+Garges-Sarcelles%2C+95140+Garges-l%C3%A8s-Gonesse" target="_blank" rel="noopener">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+    Y aller
+  </a>
+</nav>
+
 <!-- ====================== BANDEAU COOKIES ====================== -->
 <div class="cookies" id="cookies" role="dialog" aria-modal="false"
      aria-labelledby="cookies-titre" aria-describedby="cookies-texte" hidden>
@@ -245,6 +264,24 @@
     }catch(e){}
   })();
 
+  /* ------------------------------ barre d'action fixe sur téléphone
+     Elle n'apparaît qu'une fois le premier écran dépassé, s'efface quand
+     le menu ou le bandeau cookies occupent déjà le bas de l'écran. */
+  var syncBar=function(){};
+  var mobar=document.getElementById('mobar');
+  if(mobar){
+    syncBar=function(){
+      var y=window.scrollY||window.pageYOffset;
+      var m=document.getElementById('menu');
+      var ck=document.getElementById('cookies');
+      var libre=(!m||!m.classList.contains('open'))&&(!ck||ck.hidden);
+      mobar.classList.toggle('on', y>240 && libre);
+    };
+    window.addEventListener('scroll',syncBar,{passive:true});
+    window.addEventListener('resize',syncBar);
+    syncBar();
+  }
+
   /* ---------------------------------------------------------- menu mobile */
   var burg=document.getElementById('burg'),menu=document.getElementById('menu');
   function setMenu(open){
@@ -252,6 +289,7 @@
     menu.classList.toggle('open',open);
     burg.setAttribute('aria-expanded',open?'true':'false');
     burg.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');
+    syncBar();
   }
   if(burg&&menu){
     burg.addEventListener('click',function(e){
@@ -333,6 +371,59 @@
     msync();
   }
 
+  /* ============================================ ouvert ou fermé maintenant
+     L'état est déduit du tableau des horaires affiché juste à côté : si les
+     horaires changent dans le HTML, cette mention suit toute seule. */
+  var statut=document.getElementById('statut');
+  if(statut){
+    var enMinutes=function(t){
+      var m=/(\d{1,2})\s*h\s*(\d{0,2})/i.exec(t);
+      return m?parseInt(m[1],10)*60+(m[2]?parseInt(m[2],10):0):null;
+    };
+    var creneau=function(jour){
+      var li=document.querySelector('.hrs li[data-day="'+jour+'"] span');
+      if(!li)return null;
+      var p=li.textContent.split(/[–—-]/);
+      if(p.length<2)return null;
+      var d=enMinutes(p[0]),f=enMinutes(p[1]);
+      if(d===null||f===null)return null;
+      if(f<=d){f+=1440;}          /* fermeture après minuit */
+      return {d:d,f:f};
+    };
+    var now=new Date(),
+        jour=now.getDay(),
+        min=now.getHours()*60+now.getMinutes(),
+        ouvert=false, prochain=null;
+    var c=creneau(jour);
+    if(c&&min>=c.d&&min<c.f){ouvert=true;}
+    /* service de la veille qui se prolonge après minuit */
+    if(!ouvert){
+      var v=creneau((jour+6)%7);
+      if(v&&v.f>1440&&min<v.f-1440){ouvert=true;}
+    }
+    if(!ouvert){
+      for(var i=0;i<7;i++){
+        var j=(jour+i)%7, s2=creneau(j);
+        if(!s2)continue;
+        if(i===0&&min>=s2.d)continue;
+        prochain={jour:j,d:s2.d};break;
+      }
+    }
+    var noms=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+    var hhmm=function(m){m=m%1440;return (m/60|0)+'h'+('0'+(m%60)).slice(-2);};
+    if(ouvert){
+      statut.className='statut';
+      statut.textContent='Ouvert maintenant';
+    }else{
+      statut.className='statut ferme';
+      statut.textContent = prochain
+        ? (prochain.jour===jour ? 'Fermé · ouvre à '+hhmm(prochain.d)
+                                : 'Fermé · ouvre '+noms[prochain.jour]+' à '+hhmm(prochain.d))
+        : 'Fermé';
+    }
+    statut.hidden=false;
+  }
+
   /* ---------------------------------------------------- carte Google Maps */
   var gmap=document.getElementById('gmap');
   if(gmap){
@@ -368,8 +459,8 @@
   }
 
   var banner=document.getElementById('cookies');
-  function showBanner(){ if(banner){banner.hidden=false;} }
-  function hideBanner(){ if(banner){banner.hidden=true;} }
+  function showBanner(){ if(banner){banner.hidden=false;} syncBar(); }
+  function hideBanner(){ if(banner){banner.hidden=true;} syncBar(); }
 
   var choice=readConsent();
   if(choice==='oui'){ loadAnalytics(); }

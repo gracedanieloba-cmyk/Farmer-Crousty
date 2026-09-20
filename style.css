@@ -670,6 +670,81 @@ picture{display:contents}
 .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
     clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
+/* ==========================================================================
+   CONFORT SUR TÉLÉPHONE
+   Cibles tactiles plus généreuses et barre d'action fixe en bas d'écran.
+   ========================================================================== */
+@media(max-width:760px){
+  /* les boutons principaux prennent toute la largeur : on les vise au pouce
+     sans regarder, et ils restent dans la forme ellipse de la maison */
+  .ell{
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    width:100%;max-width:360px;margin-inline:auto;
+    min-height:58px;padding:16px 24px;font-size:17px;
+  }
+  .card .ell,.pcard .ell{max-width:none}
+
+  /* « Ouvrir le plan » était une pastille de 31 px de haut */
+  .pill{min-height:48px;padding:14px 20px;font-size:13px}
+
+  /* case à cocher du formulaire : 28 px, et tout le libellé reste cliquable */
+  .field.check{gap:14px}
+  .field.check input{width:28px;height:28px;margin-top:4px}
+  .field.check label{font-size:16px}
+
+  /* liens de bas de page cités dans une phrase : un peu plus de hauteur */
+  .legal a{display:inline-block;padding-block:7px}
+}
+
+/* le lien d'évitement, visible seulement au clavier, doit rester saisissable */
+.skip{min-height:44px;display:inline-flex;align-items:center}
+
+/* ---------- barre d'action fixe (téléphone uniquement) ---------- */
+.mobar{display:none}
+@media(max-width:760px){
+  .mobar{
+    position:fixed;left:0;right:0;bottom:0;z-index:65;
+    display:flex;gap:10px;
+    padding:10px 14px;
+    padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));
+    background:rgba(255,255,255,.97);
+    border-top:1px solid var(--sand);
+    box-shadow:0 -10px 28px rgba(20,16,13,.12);
+    transform:translateY(130%);
+    transition:transform .28s ease;
+  }
+  .mobar.on{transform:translateY(0)}
+  .mobar a{
+    flex:1;min-height:54px;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    border-radius:100px;text-decoration:none;
+    font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:.01em;
+    -webkit-tap-highlight-color:transparent;touch-action:manipulation;
+  }
+  .mobar a svg{flex:none}
+  .mobar .mo-carte{background:var(--brand);color:var(--ink)}
+  .mobar .mo-aller{background:var(--ink);color:var(--white)}
+  /* la barre ne doit jamais masquer la fin de la page */
+  body{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+}
+@media(prefers-reduced-motion:reduce){.mobar{transition:none}}
+
+/* ---------- état d'ouverture, calculé à partir du tableau des horaires ---------- */
+.statut{
+  display:inline-flex;align-items:center;gap:9px;margin-top:10px;
+  font-family:var(--mono);font-weight:700;font-size:13px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink);
+}
+.statut[hidden]{display:none}
+.statut::before{content:"";width:10px;height:10px;border-radius:50%;background:#1A7F43;flex:none}
+.statut.ferme{color:var(--muted)}
+.statut.ferme::before{background:var(--muted)}
+
+/* ---------- les deux actions de la fiche boutique ---------- */
+.shop-acts{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.pill-full{background:var(--brand);border-color:var(--brand);color:var(--ink);font-weight:700}
+.pill-full:hover{background:var(--ink);border-color:var(--ink);color:var(--white)}
+
 
 /* ==========================================================================
    PAGES INTÉRIEURES
