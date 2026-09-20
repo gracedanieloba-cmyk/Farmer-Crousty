@@ -1,0 +1,14 @@
+{
+  "name": "Farmer Crousty",
+  "short_name": "Farmer Crousty",
+  "description": "Poulet rôti à la braise à Garges-Sarcelles",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#FFF6EF",
+  "theme_color": "#F0641B",
+  "lang": "fr",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
