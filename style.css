@@ -693,3 +693,10 @@ body.inner .brandblock:first-of-type{padding-top:clamp(34px,4vw,58px)}
 
 .menu a[aria-current="page"]{border-color:var(--brand);color:var(--brand)}
 .fcol a[aria-current="page"]{color:var(--brand-text)}
+
+/* Dans le menu déroulant du mobile, le fond est déjà orange : la page en
+   cours s'y écrivait en orange sur orange, donc invisible. On la passe en
+   noir, qui se détache nettement et signale tout aussi bien la page active. */
+@media(max-width:1080px){
+  .menu a[aria-current="page"]{color:var(--ink);border-color:rgba(20,16,13,.3);font-weight:800}
+}
