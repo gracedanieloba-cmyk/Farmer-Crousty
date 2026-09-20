@@ -62,7 +62,12 @@ body{
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
-img{max-width:100%;display:block}
+/* Les attributs width/height des images servent a reserver la place avant
+   chargement, mais le navigateur les applique aussi comme hauteur fixe :
+   des que la largeur est contrainte, l'image se retrouve etiree.
+   height:auto retablit la proportion ; les cas qui imposent vraiment une
+   hauteur (fonds plein cadre, vignettes) ont des selecteurs plus precis. */
+img{max-width:100%;display:block;height:auto}
 a{color:inherit}
 h1,h2,h3,h4{margin:0;font-weight:800;text-transform:uppercase;line-height:1.02;letter-spacing:-.005em}
 h1{font-size:var(--h1)}
@@ -177,7 +182,7 @@ p{margin:0}
 /* ==========================================================================
    HERO
    ========================================================================== */
-.hero{position:relative;min-height:clamp(480px,72vh,730px);display:flex;align-items:flex-end;overflow:hidden}
+.hero{position:relative;min-height:clamp(520px,84vh,880px);display:flex;align-items:flex-end;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:var(--ink);pointer-events:none}
 .hero-bg img,.hero-bg video{
   position:absolute;inset:0;width:100%;height:100%;
@@ -287,6 +292,60 @@ p{margin:0}
 .card-img span{display:block;background:var(--white);border-radius:14px;padding:9px;border:1px solid rgba(20,16,13,.08)}
 .card-img img{border-radius:8px;margin-inline:auto;max-height:clamp(170px,21vw,272px);width:auto;object-fit:cover}
 .card .ell{margin-top:auto;align-self:center}
+
+/* ==========================================================================
+   MINI-CARROUSEL DE L'ACCUEIL (un avant-goût de la carte)
+   Petites cartes qui glissent au doigt sur mobile, aux flèches sur ordinateur.
+   ========================================================================== */
+.apercu{padding-block:clamp(38px,4.2vw,64px)}
+.apercu-h{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.apercu-t{max-width:40ch}
+.apercu-t h2{hyphens:none}
+.apercu-t .lede{margin-top:14px}
+
+.mrail-nav{display:flex;gap:10px;flex:0 0 auto}
+.marrow{
+  width:52px;height:52px;border-radius:50%;
+  border:2px solid var(--ink);background:transparent;color:var(--ink);
+  display:grid;place-content:center;cursor:pointer;
+  transition:background-color .2s ease,color .2s ease,opacity .2s ease;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
+}
+.marrow:hover:not([disabled]){background:var(--ink);color:var(--white)}
+.marrow[disabled]{opacity:.28;cursor:default}
+@media(max-width:760px){.mrail-nav{display:none}}
+.mrail-nav[hidden]{display:none}
+
+.mrail{
+  display:flex;gap:16px;margin-top:clamp(20px,2.4vw,30px);
+  overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  padding:4px var(--gut) 16px;
+  scrollbar-width:thin;scrollbar-color:var(--brand) transparent;
+}
+.mrail:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+.mrail::-webkit-scrollbar{height:6px}
+.mrail::-webkit-scrollbar-thumb{background:var(--brand);border-radius:99px}
+@media(prefers-reduced-motion:reduce){.mrail{scroll-behavior:auto}}
+
+.mcard{
+  flex:0 0 min(286px,72vw);scroll-snap-align:start;
+  border-radius:16px;border:1px solid var(--sand);overflow:hidden;
+  background:var(--cream);color:var(--ink);text-decoration:none;
+  display:flex;flex-direction:column;
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+@media(hover:hover){.mcard:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(20,16,13,.15)}}
+.mcard:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+.mcard-img{display:block;background:var(--white);aspect-ratio:4/3;overflow:hidden}
+.mcard-img img{width:100%;height:100%;object-fit:cover;display:block}
+.mcard-txt{display:flex;flex-direction:column;gap:6px;padding:15px 16px 18px;flex:1}
+.mcard-sub{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-text)}
+.mcard-n{font-family:var(--ff);font-weight:800;text-transform:uppercase;font-size:clamp(16px,1.35vw,19px);line-height:1.06}
+.mcard-v{margin-top:auto;padding-top:12px;font-family:var(--mono);font-weight:700;font-size:15px}
+.mcard.dark{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.mcard.dark .mcard-sub{color:var(--tint)}
+
+.apercu-cta{margin-top:clamp(16px,1.9vw,26px);text-align:center}
 
 /* ==========================================================================
    CARTES À JOUER (la carte)

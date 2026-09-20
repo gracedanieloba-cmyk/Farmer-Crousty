@@ -144,6 +144,25 @@
 (function(){
   'use strict';
 
+  /* ================================================ arrivée en haut de page
+     En navigation normale le navigateur affiche déjà le haut du document.
+     Mais quand le site est affiché dans un cadre (aperçu intégré), c'est la
+     page qui contient le cadre qui garde sa position : on se retrouve au
+     milieu de la nouvelle page. On remonte donc explicitement, sauf si on
+     vise une ancre précise ou si l'on revient en arrière. */
+  (function(){
+    var nav=(window.performance&&performance.getEntriesByType)
+              ? performance.getEntriesByType('navigation')[0] : null;
+    if((nav&&nav.type==='back_forward')||location.hash)return;
+    var haut=document.getElementById('haut')||document.body;
+    window.scrollTo(0,0);
+    try{
+      if(window.top!==window.self&&haut&&haut.scrollIntoView){
+        haut.scrollIntoView({block:'start'});
+      }
+    }catch(e){}
+  })();
+
   /* ---------------------------------------------------------- menu mobile */
   var burg=document.getElementById('burg'),menu=document.getElementById('menu');
   function setMenu(open){
@@ -204,6 +223,32 @@
       var tb=document.getElementById(panel.getAttribute('aria-labelledby'));
       if(tb){tb.click();}
     }
+  }
+
+  /* ------------------------------------ mini-carrousel de la page d'accueil */
+  var mrail=document.getElementById('mrail');
+  if(mrail){
+    var mprev=document.querySelector('[data-mrail="prev"]'),
+        mnext=document.querySelector('[data-mrail="next"]'),
+        MGAP=16;
+    var mstep=function(){
+      var c=mrail.querySelector('.mcard');
+      return c?Math.round(c.getBoundingClientRect().width)+MGAP:280;
+    };
+    var mnav=document.querySelector('.mrail-nav');
+    var msync=function(){
+      var over=mrail.scrollWidth-mrail.clientWidth;
+      /* rien à faire glisser : les flèches n'ont pas lieu d'être */
+      if(mnav){mnav.hidden=over<=4;}
+      if(!mprev||!mnext)return;
+      mprev.disabled=mrail.scrollLeft<=2;
+      mnext.disabled=mrail.scrollLeft>=over-2;
+    };
+    if(mprev){mprev.addEventListener('click',function(){mrail.scrollBy({left:-mstep(),behavior:'smooth'});});}
+    if(mnext){mnext.addEventListener('click',function(){mrail.scrollBy({left:mstep(),behavior:'smooth'});});}
+    mrail.addEventListener('scroll',msync,{passive:true});
+    window.addEventListener('resize',msync);
+    msync();
   }
 
   /* ---------------------------------------------------- carte Google Maps */
