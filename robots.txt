@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://VOTRE-COMPTE.github.io/farmer-crousty/sitemap.xml
+Sitemap: https://gracedanieloba-cmyk.github.io/Farmer-Crousty/sitemap.xml
