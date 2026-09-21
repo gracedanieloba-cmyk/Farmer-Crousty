@@ -49,7 +49,6 @@ L'adresse du site est déjà réglée sur
 | `VOTRE-CLE-WEB3FORMS` | `contact.html` | la clé du service d'envoi du formulaire |
 | `VOTRE-DOMAINE` | toutes les pages | le domaine déclaré dans Plausible |
 | `TÉLÉPHONE` | `contact.html`, `nous-trouver.html` | le numéro de commande |
-| `HORAIRES` | `nous-trouver.html` | les horaires réels |
 | `ADRESSE` | `nous-trouver.html` | l'adresse exacte de la boutique |
 | `VIDÉO` | `index.html` | la vidéo du hero sous licence |
 

@@ -102,27 +102,13 @@
       "Monday",
       "Tuesday",
       "Wednesday",
-      "Thursday"
-     ],
-     "opens": "11:30",
-     "closes": "23:00"
-    },
-    {
-     "@type": "OpeningHoursSpecification",
-     "dayOfWeek": [
+      "Thursday",
       "Friday",
-      "Saturday"
-     ],
-     "opens": "11:30",
-     "closes": "23:59"
-    },
-    {
-     "@type": "OpeningHoursSpecification",
-     "dayOfWeek": [
+      "Saturday",
       "Sunday"
      ],
-     "opens": "12:00",
-     "closes": "23:00"
+     "opens": "07:00",
+     "closes": "23:59"
     }
    ],
    "sameAs": [
@@ -156,14 +142,10 @@
 <section class="sec" id="trouver">
   <div class="wrap sec-h" style="text-align:center">
     <h1>Farmer Crousty<br>à Garges-Sarcelles</h1>
-    <p class="lede" style="margin-inline:auto">Juste à la sortie de la gare de Garges-Sarcelles, sur l’avenue du Général de Gaulle. Poulet grillé, tenders, nems et barquettes, à emporter ou sur place, midi et soir.</p>
+    <p class="lede" style="margin-inline:auto">Juste à la sortie de la gare de Garges-Sarcelles, sur l’avenue du Général de Gaulle. Poulet grillé, tenders, nems et barquettes, à emporter ou sur place, tous les jours de 7h à minuit.</p>
   </div>
 
   <div class="wrap">
-    <div class="switch" role="tablist" aria-label="Horaires">
-      <button role="tab" id="tab-sem" aria-controls="p-sem" aria-selected="true">Du lundi au jeudi</button>
-      <button role="tab" id="tab-we" aria-controls="p-we" aria-selected="false">Vendredi, samedi &amp; dimanche</button>
-    </div>
 
     <div class="shop">
       <div class="shop-col">
@@ -196,22 +178,18 @@
 
       <div class="shop-col">
         <h4>Horaires</h4>
-        <!-- HORAIRES : à ajuster avec les horaires réels -->
-        <div class="panel" id="p-sem" role="tabpanel" aria-labelledby="tab-sem">
-          <ul class="hrs">
-            <li data-day="1"><b>Lundi</b><span>11h30 – 23h00</span></li>
-            <li data-day="2"><b>Mardi</b><span>11h30 – 23h00</span></li>
-            <li data-day="3"><b>Mercredi</b><span>11h30 – 23h00</span></li>
-            <li data-day="4"><b>Jeudi</b><span>11h30 – 23h00</span></li>
-          </ul>
-        </div>
-        <div class="panel" id="p-we" role="tabpanel" aria-labelledby="tab-we" hidden>
-          <ul class="hrs">
-            <li data-day="5"><b>Vendredi</b><span>11h30 – 00h00</span></li>
-            <li data-day="6"><b>Samedi</b><span>11h30 – 00h00</span></li>
-            <li data-day="0"><b>Dimanche</b><span>12h00 – 23h00</span></li>
-          </ul>
-        </div>
+        <!-- HORAIRES : une ligne par jour. « 00h00 » en fin de plage = minuit.
+             La mention « Ouvert maintenant » et les données Google suivent ce tableau. -->
+        <p class="hrs-resume">Tous les jours, de 7h à minuit</p>
+        <ul class="hrs">
+            <li data-day="1"><b>Lundi</b><span>07h00 – 00h00</span></li>
+            <li data-day="2"><b>Mardi</b><span>07h00 – 00h00</span></li>
+            <li data-day="3"><b>Mercredi</b><span>07h00 – 00h00</span></li>
+            <li data-day="4"><b>Jeudi</b><span>07h00 – 00h00</span></li>
+            <li data-day="5"><b>Vendredi</b><span>07h00 – 00h00</span></li>
+            <li data-day="6"><b>Samedi</b><span>07h00 – 00h00</span></li>
+            <li data-day="0"><b>Dimanche</b><span>07h00 – 00h00</span></li>
+        </ul>
       </div>
 
       <div class="shop-col">

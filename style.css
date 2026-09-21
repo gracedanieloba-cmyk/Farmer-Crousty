@@ -740,7 +740,7 @@ picture{display:contents}
 .statut.ferme::before{background:var(--muted)}
 
 /* ---------- les deux actions de la fiche boutique ---------- */
-.shop-acts{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.shop-acts{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;margin-top:12px}
 .pill-full{background:var(--brand);border-color:var(--brand);color:var(--ink);font-weight:700}
 .pill-full:hover{background:var(--ink);border-color:var(--ink);color:var(--white)}
 
@@ -753,6 +753,10 @@ picture{display:contents}
   font-weight:400;font-size:clamp(23px,2.1vw,30px);line-height:1.18;
   letter-spacing:.005em;color:var(--brand-text);max-width:30ch;
 }
+
+/* résumé des horaires au-dessus du tableau */
+.hrs-resume{font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--brand-text);margin:10px 0 14px}
 
 
 /* ==========================================================================
