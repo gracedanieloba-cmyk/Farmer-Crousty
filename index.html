@@ -6,15 +6,15 @@
 <!-- toute ressource appelée en http est basculée en https automatiquement -->
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
-<title>Farmer Crousty — Poulet rôti à la braise à Garges-Sarcelles</title>
-<meta name="description" content="Poulet rôti à la braise, menus complets dès 7 €, tenders, alloco et sauces maison. À emporter et sur place, à la gare de Garges-Sarcelles.">
+<title>Farmer Crousty — Fast-food poulet à Garges-Sarcelles</title>
+<meta name="description" content="Fast-food de poulet à la gare RER D de Garges-Sarcelles : poulet grillé, tenders, Farmer Crousty et sauces maison. Menus dès 7 €, à emporter ou sur place.">
 <link rel="canonical" href="https://gracedanieloba-cmyk.github.io/Farmer-Crousty/">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#F0641B">
 
 <meta property="og:site_name" content="Farmer Crousty">
-<meta property="og:title" content="Farmer Crousty — Poulet rôti à la braise à Garges-Sarcelles">
-<meta property="og:description" content="Poulet rôti à la braise, menus complets dès 7 €, tenders, alloco et sauces maison. À emporter et sur place, à la gare de Garges-Sarcelles.">
+<meta property="og:title" content="Farmer Crousty — Fast-food poulet à Garges-Sarcelles">
+<meta property="og:description" content="Fast-food de poulet à la gare RER D de Garges-Sarcelles : poulet grillé, tenders, Farmer Crousty et sauces maison. Menus dès 7 €, à emporter ou sur place.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="https://gracedanieloba-cmyk.github.io/Farmer-Crousty/">
@@ -23,8 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Poulet rôti à la braise, Farmer Crousty à Garges-Sarcelles">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Farmer Crousty — Poulet rôti à la braise à Garges-Sarcelles">
-<meta name="twitter:description" content="Poulet rôti à la braise, menus complets dès 7 €, tenders, alloco et sauces maison. À emporter et sur place, à la gare de Garges-Sarcelles.">
+<meta name="twitter:title" content="Farmer Crousty — Fast-food poulet à Garges-Sarcelles">
+<meta name="twitter:description" content="Fast-food de poulet à la gare RER D de Garges-Sarcelles : poulet grillé, tenders, Farmer Crousty et sauces maison. Menus dès 7 €, à emporter ou sur place.">
 <meta name="twitter:image" content="https://gracedanieloba-cmyk.github.io/Farmer-Crousty/images/og-image.jpg">
 
 <link rel="icon" href="icons/favicon.ico" sizes="any">
@@ -39,15 +39,92 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700;800&family=Archivo:wght@400;500&family=Courier+Prime:wght@400;700&family=Lilita+One&display=swap">
 <link rel="stylesheet" href="style.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Restaurant",
-"name":"Farmer Crousty","servesCuisine":"Poulet rôti, street food",
-"url":"https://gracedanieloba-cmyk.github.io/Farmer-Crousty/","image":"https://gracedanieloba-cmyk.github.io/Farmer-Crousty/images/og-image.jpg",
-"priceRange":"€","address":{"@type":"PostalAddress",
-"streetAddress":"Avenue du Général de Gaulle","addressLocality":"Garges-lès-Gonesse",
-"postalCode":"95140","addressCountry":"FR"},
-"hasMenu":"https://gracedanieloba-cmyk.github.io/Farmer-Crousty/la-carte.html",
-"sameAs":["https://www.instagram.com/farmer_crousty/",
-"https://www.tiktok.com/@farmer_crousty"]}
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebSite",
+   "@id": "https://gracedanieloba-cmyk.github.io/Farmer-Crousty/#site",
+   "url": "https://gracedanieloba-cmyk.github.io/Farmer-Crousty/",
+   "name": "Farmer Crousty",
+   "inLanguage": "fr-FR",
+   "publisher": {
+    "@id": "https://gracedanieloba-cmyk.github.io/Farmer-Crousty/#restaurant"
+   }
+  },
+  {
+   "@type": "FastFoodRestaurant",
+   "@id": "https://gracedanieloba-cmyk.github.io/Farmer-Crousty/#restaurant",
+   "name": "Farmer Crousty",
+   "alternateName": "Farmer Crousty — Poulet & Co.",
+   "description": "Fast-food de poulet à la sortie de la gare RER D de Garges-Sarcelles : poulet grillé, tenders, Farmer Crousty, barquettes et sauces maison, à emporter ou sur place.",
+   "url": "https://gracedanieloba-cmyk.github.io/Farmer-Crousty/",
+   "logo": "https://gracedanieloba-cmyk.github.io/Farmer-Crousty/images/logo.png",
+   "image": [
+    "https://gracedanieloba-cmyk.github.io/Farmer-Crousty/images/og-image.jpg",
+    "https://gracedanieloba-cmyk.github.io/Farmer-Crousty/images/roti_maison.jpg",
+    "https://gracedanieloba-cmyk.github.io/Farmer-Crousty/images/farmer.jpg"
+   ],
+   "servesCuisine": [
+    "Poulet",
+    "Fast-food",
+    "Street food"
+   ],
+   "priceRange": "€",
+   "currenciesAccepted": "EUR",
+   "acceptsReservations": false,
+   "hasMenu": {
+    "@id": "https://gracedanieloba-cmyk.github.io/Farmer-Crousty/la-carte.html#menu"
+   },
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Avenue du Général de Gaulle, gare de Garges-Sarcelles",
+    "addressLocality": "Garges-lès-Gonesse",
+    "postalCode": "95140",
+    "addressRegion": "Île-de-France",
+    "addressCountry": "FR"
+   },
+   "areaServed": [
+    "Garges-lès-Gonesse",
+    "Sarcelles"
+   ],
+   "openingHoursSpecification": [
+    {
+     "@type": "OpeningHoursSpecification",
+     "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday"
+     ],
+     "opens": "11:30",
+     "closes": "23:00"
+    },
+    {
+     "@type": "OpeningHoursSpecification",
+     "dayOfWeek": [
+      "Friday",
+      "Saturday"
+     ],
+     "opens": "11:30",
+     "closes": "23:59"
+    },
+    {
+     "@type": "OpeningHoursSpecification",
+     "dayOfWeek": [
+      "Sunday"
+     ],
+     "opens": "12:00",
+     "closes": "23:00"
+    }
+   ],
+   "sameAs": [
+    "https://www.instagram.com/farmer_crousty/",
+    "https://www.tiktok.com/@farmer_crousty"
+   ]
+  }
+ ]
+}
 </script>
 </head>
 <body>
@@ -70,7 +147,7 @@
 </header><div id="haut"></div>
 <section class="hero" id="top">
   <div class="hero-bg">
-    <picture><source srcset="images/poster.webp" type="image/webp"><img src="images/poster.jpg" alt="Poulet rôti à la braise, servi sur une planche en bois" fetchpriority="high" width="1600" height="900" loading="eager" decoding="async"></picture>
+    <picture><source srcset="images/poster.webp" type="image/webp"><img src="images/poster.jpg" alt="Une main détache une cuisse de poulet doré, servi à l’assiette" fetchpriority="high" width="1600" height="900" loading="eager" decoding="async"></picture>
     <!-- VIDÉO : remplacer par le fichier sous licence (la version actuelle est l'aperçu iStock, filigrané) -->
     <video autoplay muted loop playsinline preload="auto" poster="images/poster.jpg" aria-hidden="true" tabindex="-1">
       <source src="poulet.mp4" type="video/mp4">
@@ -94,7 +171,7 @@
 </section>
 <!-- ====================== BANDEAU PHOTO ====================== -->
 <section class="strip">
-  <div class="strip-bg"><picture><source srcset="images/band.webp" type="image/webp"><img src="images/band.jpg" alt="Cuisses de poulet rôties alignées sur la planche" width="1920" height="560" loading="lazy" decoding="async"></picture></div>
+  <div class="strip-bg"><picture><source srcset="images/band.webp" type="image/webp"><img src="images/band.jpg" alt="Cuisses, pilons et escalope de poulet grillés, chacun sur sa planche en bois" width="1920" height="560" loading="lazy" decoding="async"></picture></div>
   <div class="wrap strip-in">
     <h2>Vous passez,<br>on découpe,<br>vous emportez</h2>
     <a class="ell ell-w" href="nous-trouver.html">Nous trouver</a>

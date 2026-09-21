@@ -41,9 +41,11 @@ en haut de cette page.
 Ces repères sont écrits en commentaire dans le code, en majuscules, faciles
 à retrouver avec une recherche.
 
+L'adresse du site est déjà réglée sur
+`https://gracedanieloba-cmyk.github.io/Farmer-Crousty`.
+
 | Repère | Fichier | À remplacer par |
 | --- | --- | --- |
-| `VOTRE-COMPTE.github.io` | toutes les pages | l'adresse réelle du site |
 | `VOTRE-CLE-WEB3FORMS` | `contact.html` | la clé du service d'envoi du formulaire |
 | `VOTRE-DOMAINE` | toutes les pages | le domaine déclaré dans Plausible |
 | `TÉLÉPHONE` | `contact.html`, `nous-trouver.html` | le numéro de commande |
@@ -92,9 +94,28 @@ et qu'une erreur survient à plusieurs niveaux de profondeur, ajouter
 
 ## Ce qui est déjà en place
 
-**Référencement** — un titre et une description propres à chaque page, un lien
-canonique, un sitemap, un robots.txt, des données structurées Schema.org pour le
-restaurant, et une image de partage 1200 × 630 pour les réseaux sociaux.
+**Référencement** — un titre (moins de 60 caractères) et une description (moins
+de 155) propres à chaque page, tournés vers les recherches locales : fast-food,
+poulet, Garges-lès-Gonesse, gare de Garges-Sarcelles. Un lien canonique, un
+sitemap, un robots.txt, une image de partage 1200 × 630, un seul titre principal
+par page et un texte alternatif descriptif sur chaque photo.
+
+Données structurées Schema.org, lues par Google :
+
+| Page | Contenu |
+| --- | --- |
+| Accueil, Nous trouver | `FastFoodRestaurant` : adresse, horaires, carte, réseaux sociaux |
+| La carte | `Menu` : les 5 formules et les 24 plats avec leur prix |
+| FAQ | `FAQPage` : les questions et leurs réponses |
+| Pages intérieures | `BreadcrumbList` : Accueil › page |
+
+Ces données sont tirées du contenu même des pages au moment de la construction :
+horaires, prix et questions y sont toujours identiques à ce qui s'affiche. Si
+vous modifiez un prix ou un horaire directement dans un fichier `.html`, pensez
+à le changer aussi dans le bloc `application/ld+json` en haut de la page.
+
+Pour ajouter le téléphone, insérer `"telephone": "+33 X XX XX XX XX",` dans le
+bloc `FastFoodRestaurant` de `index.html` et de `nous-trouver.html`.
 
 **Vitesse** — feuille de style unique mise en cache, photos en WebP avec repli
 JPEG (60 % plus légères), dimensions inscrites sur chaque image pour éviter les
