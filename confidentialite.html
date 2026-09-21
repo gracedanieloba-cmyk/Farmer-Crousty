@@ -35,8 +35,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700;800&family=Archivo:wght@400;500&family=Courier+Prime:wght@400;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700;800&family=Archivo:wght@400;500&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700;800&family=Archivo:wght@400;500&family=Courier+Prime:wght@400;700&family=Lilita+One&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700;800&family=Archivo:wght@400;500&family=Courier+Prime:wght@400;700&family=Lilita+One&display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="inner">
@@ -183,17 +183,16 @@
   })();
 
   /* ------------------------------ barre d'action fixe sur téléphone
-     Elle n'apparaît qu'une fois le premier écran dépassé, s'efface quand
-     le menu ou le bandeau cookies occupent déjà le bas de l'écran. */
+     Visible dès l'arrivée sur la page ; elle s'efface seulement quand le
+     menu ou le bandeau cookies occupent déjà le bas de l'écran. */
   var syncBar=function(){};
   var mobar=document.getElementById('mobar');
   if(mobar){
     syncBar=function(){
-      var y=window.scrollY||window.pageYOffset;
       var m=document.getElementById('menu');
       var ck=document.getElementById('cookies');
       var libre=(!m||!m.classList.contains('open'))&&(!ck||ck.hidden);
-      mobar.classList.toggle('on', y>240 && libre);
+      mobar.classList.toggle('on', libre);
     };
     window.addEventListener('scroll',syncBar,{passive:true});
     window.addEventListener('resize',syncBar);

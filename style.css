@@ -675,14 +675,13 @@ picture{display:contents}
    Cibles tactiles plus généreuses et barre d'action fixe en bas d'écran.
    ========================================================================== */
 @media(max-width:760px){
-  /* les boutons principaux prennent toute la largeur : on les vise au pouce
-     sans regarder, et ils restent dans la forme ellipse de la maison */
+  /* boutons ellipse : compacts, mais toujours 50 px de haut au minimum */
   .ell{
-    display:flex;align-items:center;justify-content:center;text-align:center;
-    width:100%;max-width:360px;margin-inline:auto;
-    min-height:58px;padding:16px 24px;font-size:17px;
+    display:inline-flex;align-items:center;justify-content:center;text-align:center;
+    min-height:50px;padding:13px 30px;font-size:16px;
   }
-  .card .ell,.pcard .ell{max-width:none}
+  /* seul le bouton d'envoi du formulaire garde toute la largeur */
+  .form .ell{display:flex;width:100%;min-height:56px;font-size:17px}
 
   /* « Ouvrir le plan » était une pastille de 31 px de haut */
   .pill{min-height:48px;padding:14px 20px;font-size:13px}
@@ -744,6 +743,16 @@ picture{display:contents}
 .shop-acts{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .pill-full{background:var(--brand);border-color:var(--brand);color:var(--ink);font-weight:700}
 .pill-full:hover{background:var(--ink);border-color:var(--ink);color:var(--white)}
+
+/* ---------- phrase d'accroche de l'accueil : Lilita One, en orange ----------
+   Une police ronde et grasse, franchement « fast-food », qui tranche avec le
+   titre en Sora juste au-dessus. En orange foncé (#C9450A) : le texte est assez
+   grand pour que le contraste passe largement le seuil AA des grands corps. */
+.bb-txt .lede.punch{
+  font-family:'Lilita One','Sora',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  font-weight:400;font-size:clamp(23px,2.1vw,30px);line-height:1.18;
+  letter-spacing:.005em;color:var(--brand-text);max-width:30ch;
+}
 
 
 /* ==========================================================================
